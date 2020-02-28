@@ -1,8 +1,8 @@
 # Database Final Project
 
-This is group 3 final project in Database System class @KMUTNB
+This is group 3 final project in Database System class @KMUTNB.
 
-Book store web application by [Django](https://www.djangoproject.com/) with [Postgresql](https://www.postgresql.org/) database
+Book store web application by [Django](https://www.djangoproject.com/) with [Postgresql](https://www.postgresql.org/) database.
 
 ## Library require
 
