@@ -1,0 +1,144 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Book Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color: rgb(213, 220, 226);
+        } 
+        nav{
+            background-color: rgb(197, 200, 204);
+            margin-top: 0;
+            }
+
+        label{
+            font-weight: bold;
+        }
+        .bg-p{
+            background-color: #D4AC0D; 
+            color: white !important;
+            
+        }
+        .tm-section-3 {
+            padding-top: 500px; 
+            padding-bottom: 20px; 
+            position: relative;
+        }
+        .nav-tabs{
+            border-bottom:1px solid rgb(65, 64, 63) ; 
+            border-width: 2px; 
+            color: rgb(167, 172, 177);
+        }
+        .nav-tabs .nav-item{
+            margin-bottom:-1px
+        }
+        .nav-tabs .nav-link{
+            border:2px solid transparent;
+            border-top-left-radius:.25rem;
+            border-top-right-radius:.25rem
+        }
+        .nav-tabs .nav-link:focus,.nav-tabs .nav-link:hover{
+            border-color:rgb(35, 29, 59) #34495E #34495E
+        }
+        .nav-tabs .nav-link.disabled{
+            color: rgb(65, 64, 63) ; 
+            border-width: 2px; ;
+            background-color:transparent;
+            border-color:transparent
+        }
+        .nav-tabs .nav-item.show .nav-link,.nav-tabs .nav-link.active{
+            color:  rgb(65, 64, 63) ; 
+            background-color:#34495E;
+            border-color:#34495E
+        }
+        .nav-tabs .dropdown-menu{
+            margin-top:1px;
+            border-top-left-radius:0;
+            border-top-right-radius:0
+        }
+        .nav-link{
+            color:  rgb(65, 64, 63);
+;
+        }
+        .nav-link:focus,.nav-tabs .nav-link:hover{
+            border-color:rgb(186, 188, 206); 
+            color: rgb(82, 83, 88);
+        }
+        .btn-own{
+            color:rgb(49, 49, 49);
+            background-color:rgb(155, 157, 160);
+            border-color:rgb(49, 49, 49);
+            font-weight: bold;
+        }
+        .btn-own:hover{
+            color:rgb(49, 49, 49);
+            background-color: rgb(155, 157, 160);
+            border-color: #566573)
+        }
+        .btn-own.focus,.btn-own:focus{
+            color:rgb(49, 49, 49);
+            background-color:rgb(222, 228, 236);
+            border-color:rgb(155, 157, 160);
+            box-shadow:0 0 0 .2rem rgb(155, 157, 160);
+        }
+        .dropdown-menu{
+            position:absolute;
+            top:100%;left:0;
+            z-index:1000;
+            display:none;
+            float:left;
+            min-width:10rem;
+            padding:.5rem 0;
+            margin:.125rem 0 0;
+            font-size:1rem;
+            color: #7FB3D5;
+            text-align:left;
+            list-style:none;
+            background-color:rgb(155, 157, 160)!important;
+            background-clip:padding-box;
+            border:1px solid rgb(155, 157, 160);
+            border-radius:.25rem
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-color">
+        <a class="navbar-brand" href="/search" style="font-weight: bold; font-size: 25px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav nav-tabs">
+                {% if user.is_authenticated %}
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">User: {{user.username}}</a>
+                    <div class="dropdown-menu">
+                      <a class="nav-link" href="/logout">Log Out</a>
+
+                    </div>
+                  </li>
+                  
+               {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login">Log In</a>
+                </li>
+               
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+
+</body>
+
+</html>

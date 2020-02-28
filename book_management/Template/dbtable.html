@@ -1,0 +1,171 @@
+
+
+{% extends 'layout2.html' %} {% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Bootstrap</title>
+    <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel = "stylesheet" href = "https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+ <center> <h1></h1><center>
+<form method = "post">
+    {% csrf_token %}
+   <center> <select class="form-control form-control-sm" id = "book" name = "ok"   style="width: 200px">>
+    <option value = "Select a databases">Select a Databases</option>
+    <option value = "Publisher">Publisher</option>
+    <option value = "Book">Book</option>
+    <option value = Author>Author</option>
+    </select><center>
+      <center> <h1></h1><center>
+   <center><input  class="btn btn-success" type = "submit" value = "OK"><center>
+</form>
+
+    <div class = "container mb-3 mt-3">
+        {% if count == 1 %}
+        <table class="table table-striped table-bordered mydatatable" style="width:100%">
+            <thead>
+                 <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                     <th>Publisher_Date</th>
+                    <th>Publisher</th>
+                     <th>Author</th>
+                 </tr>
+            </thead>
+           <tbody>
+           {% for row in rows %}
+                <tr>
+                    <td>{{row.id}}</td>
+                    <td>{{row.name}}</td>
+                    <td>{{row.publish_date}}</td>
+                    <td>{{row.publisher.id}}</td>
+                    <td>{{row.author.id}}</td>
+
+                </tr>
+           {% endfor %}
+            </tbody>
+            <tfoot>
+                 <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                     <th>Publisher_Date</th>
+                    <th>Publisher</th>
+                     <th>Author</th>
+                 </tr>
+
+            </tfoot>
+        </table>
+    </div>
+{% endif %}
+<div class = "container mb-3 mt-3">
+        {% if count == 2 %}
+        <table class="table table-striped table-bordered mydatatable" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                     <th>Name</th>
+                    <th>ADDRESS</th>
+                    <th>COUNTRY</th>
+                </tr>
+            </thead>
+           <tbody>
+           {% for row in rows %}
+                <tr>
+                     <td>{{row.id}}</td>
+                    <td>{{row.name}}</td>
+                    <td>{{row.address}}</td>
+                    <td>{{row.country}}</td>
+                </tr>
+           {% endfor %}
+            </tbody>
+            <tfoot>
+                 <tr>
+                    <th>ID</th>
+                     <th>Name</th>
+                    <th>ADDRESS</th>
+                    <th>COUNTRY</th>
+                 </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endif %}
+<div class = "container mb-3 mt-3">
+        {% if count == 3 %}
+        <table class="table table-striped table-bordered mydatatable" style="width:100%">
+            <thead>
+                <tr>
+                     <th>ID</th>
+                    <th>Name</th>
+                    <th>ADDRESS</th>
+                     <th>SEX</th>
+                    <th>TEL</th>
+                    <Th>Member</Th>
+                </tr>
+            </thead>
+           <tbody>
+           {% for row in rows %}
+                <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.address}}</td>
+                        <td>{{row.sex}}</td>
+                        <td>{{row.tel}}</td>
+                        <td>{{row.member_in.id}}</td>
+                </tr>
+           {% endfor %}
+            </tbody>
+            <tfoot>
+                 <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                     <th>ADDRESS</th>
+                     <th>SEX</th>
+                     <th>TEL</th>
+                     <th>Member</th>
+                 </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endif %}
+    
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src = "http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src = "https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src = "https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
+    <script src = "https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"></script>
+    <script src = "https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css"></script>
+    <script src = "https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css"></script>
+
+    <script>
+            var table = $('.mydatatable').DataTable();
+
+            $('.mydatatable tfoot th').each( function () {
+                var title = $(this).text();
+                $(this).html( '<input type="text" placeholder ="'+title+'" />' );
+            });
+
+            table.columns().every( function () {
+                var that = this;
+                $('input' , this.footer() ).on( 'keyup change', function () {
+                    if ( that.search() !== this.value ) {
+                        that.search( this.value ).draw();
+                    }
+                 });
+            });
+
+    </script>
+
+</body>
+</html>
+
+
+{% endblock %}
+
+
+

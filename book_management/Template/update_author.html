@@ -1,0 +1,178 @@
+
+{% if user.is_authenticated %}
+{% load static %}
+
+<head>
+    <title>Update Author</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({
+            format: "dd MM yyyy - hh:ii"
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a class="navbar-brand" href="/home">Somsri Bookstore</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navb">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Insert
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/insert_book">Book</a>
+                        <a class="dropdown-item" href="/insert_author">Author</a>
+                        <a class="dropdown-item" href="/insert_publisher">Publisher</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Update
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/update_book">Book</a>
+                        <a class="dropdown-item" href="/update_author">Author</a>
+                        <a class="dropdown-item" href="/update_publisher">Publisher</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Delete
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/delete_book">Book</a>
+                        <a class="dropdown-item" href="/delete_author">Author</a>
+                        <a class="dropdown-item" href="/delete_publisher">Publisher</a>
+                    </div>
+                </li>
+            </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown">User: {{user.username}}</a>
+                <div class="dropdown-menu">
+                  <a class="nav-link" href="/logout">Log Out</a>
+
+                </div>
+              </li>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            <center>ID</center>
+                        </th>
+                        <th>
+                            <center>Author name</center>
+                        </th>
+                        <th>
+                            <center>Address</center>
+                        </th>
+                        <th>
+                            <center>Sex</center>
+                        </th>
+                        <th>
+                            <center>Tel</center>
+                        </th>
+                        <th>
+                            <center>Member in</center>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <thead>
+                    {% for author in authors %}
+                    <tr>
+                        <td>
+                            <center>{{author.id}}</center>
+                        </td>
+                        <td>{{author.name}}</td>
+                        <td>{{author.address}}</td>
+                        <td>{{author.sex}}</td>
+                        <td>{{author.tel}}</td>
+                        <td>{{author.member_in.name}}</td>
+                        <td>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#modal_update{{author.id}}">
+                                Update
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal_update{{author.id}}" tabindex="-1" role="dialog"
+                        aria-labelledby="modal_update_label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modal_update_label">Update author</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label>Author name:</label>
+                                            <input type="text" class="form-control" name="author_name" value="{{author.name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Address:</label>
+                                            <input class="form-control" rows="5" name="address" value="{{author.address}}">
+                                        </div>
+                                        <div class="row">
+                                            <div class='col-sm-6'>
+                                                <label>Sex:</label>
+                                                <input type='text' class="form-control" name="sex" value="{{author.sex}}">
+                                            </div>
+                                            <div class='col-sm-6'>
+                                                <label>Tel:</label>
+                                                <input type='text' class="form-control" name="tel" value="{{author.tel}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Member in (Publisher ID):</label>
+                                            <input type="text" class="form-control" name="pub_id" value="{{author.member_in.id}}">
+                                        </div>
+                                        <input type="hidden" name="id" value="{{author.id}}">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </thead>
+        </div>
+        <h2>Update author</h2>
+        <p>Update author to the database</p>
+    </div>
+</body>
+{% else %}
+<li class="nav-item">
+    <a class="nav-link" href="/accounts/login">Log In</a>
+</li>
+<h1></h1>
+<h1></h1>
+<h1><center>Please login!</center></h1>
+
+{% endif %}
