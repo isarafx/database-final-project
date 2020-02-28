@@ -2,7 +2,14 @@
 
 This is group 3 final project in Database System class @KMUTNB.
 
-Book store web application by [Django](https://www.djangoproject.com/) with [Postgresql](https://www.postgresql.org/) database.
+Book store web application by [Django](https://www.djangoproject.com/) with [Postgresql](https://www.postgresql.org/) DBMS.
+
+## Framework require
+[Django](https://www.djangoproject.com/) -> [Django Installation](https://docs.djangoproject.com/en/3.0/intro/install/)
+
+```bash
+pip install Django
+```
 
 ## Library require
 
@@ -11,6 +18,9 @@ Book store web application by [Django](https://www.djangoproject.com/) with [Pos
 ```bash
 pip install psycopg2
 ```
+
+## DBMS require
+[Posgresql](https://www.postgresql.org/)
 
 ## Group 3 member
 
