@@ -14,10 +14,10 @@ pip install psycopg2
 
 ## Group 3 member
 
-Mr. Isara       Kunudomchaiwat      Student ID 6001012610097
+* Mr. Isara       Kunudomchaiwat      Student ID 6001012610097
 
-Ms. Jirapa      Dadee               Student ID 6001012630012
+* Ms. Jirapa      Dadee               Student ID 6001012630012
 
-Mr. Phitchakorn Phancharoen         Student ID 6001012630080
+* Mr. Phitchakorn Phancharoen         Student ID 6001012630080
 
-Mr. Saksit      Wilainuch           Student ID 6001012630144
+* Mr. Saksit      Wilainuch           Student ID 6001012630144
