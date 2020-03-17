@@ -34,7 +34,7 @@ urlpatterns = [
     url('delete_publisher/', views.delete_publisher),
     url('accounts/profile/', views.home),
     url('home/', views.home),
-
+    url('phichet/', views.phichet),
     
     path('',include('book_management.urls')),
     path('accounts/',include('django.contrib.auth.urls')),

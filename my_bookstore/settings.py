@@ -25,7 +25,7 @@ SECRET_KEY = '3b5f(q2iegtycp6w6%ajbduih*649@!xy3%)$(#-a80+n_%o8h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['128.199.230.59','potatolife.studio','www.potatolife.studio']
 
 
 # Application definition

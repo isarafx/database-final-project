@@ -277,6 +277,8 @@ def createuser (request):
         messages.info(request,"Password not match")
         return redirect('/signup')
 
+def phichet (request):
+    return render(request,'phichet.html')
 
 
 
