@@ -25,7 +25,7 @@ SECRET_KEY = '3b5f(q2iegtycp6w6%ajbduih*649@!xy3%)$(#-a80+n_%o8h'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -74,15 +74,25 @@ WSGI_APPLICATION = 'my_bookstore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': '20011qwe',
+#         'HOST': '127.0.0.1'
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres_book',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost'
+        'PASSWORD': '789654123',
+        'HOST': 'database-1.ci5wsi0y69hz.ap-southeast-1.rds.amazonaws.com'
     }
 }
+
 
 
 # Password validation

@@ -19,15 +19,27 @@ def homepage (request):
     table = []
     if request.method == "POST":
         switch = request.POST["ok"]
-        if switch == 'Publisher':
-             count = 2
-             table = Publisher.objects.all()
-        elif switch == 'Book':
-             count = 1
-             table = Book.objects.all()
-        elif switch == 'Author':
-              count = 3
-              table = Author.objects.all()
+        quanity = request.POST["quanity"]
+        if quanity in ['10', '100', '1000']:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all().order_by('id')[:int(quanity)]
+        else:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all()
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all()
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all()
 
     return render(request,'homepage.html',{'rows':table,'count':count})
 
@@ -38,15 +50,27 @@ def home(request):
     table = []
     if request.method == "POST":
         switch = request.POST["ok"]
-        if switch == 'Publisher':
-             count = 2
-             table = Publisher.objects.all()
-        elif switch == 'Book':
-             count = 1
-             table = Book.objects.all()
-        elif switch == 'Author':
-              count = 3
-              table = Author.objects.all()
+        quanity = request.POST["quanity"]
+        if quanity in ['10', '100', '1000']:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all().order_by('id')[:int(quanity)]
+        else:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all()
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all()
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all()
 
     return render(request,'home.html',{'rows':table,'count':count})
 
@@ -195,16 +219,27 @@ def dbtable(request):
     table = []
     if request.method == "POST":
         switch = request.POST["ok"]
-        if switch == 'Publisher':
-             count = 2
-             table = Publisher.objects.all()
-        elif switch == 'Book':
-             count = 1
-             table = Book.objects.all()
-        elif switch == 'Author':
-              count = 3
-              table = Author.objects.all()
-
+        quanity = request.POST["quanity"]
+        if quanity in ['10', '100', '1000']:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all().order_by('id')[:int(quanity)]
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all().order_by('id')[:int(quanity)]
+        else:
+            if switch == 'Publisher':
+                count = 2
+                table = Publisher.objects.all()
+            elif switch == 'Book':
+                count = 1
+                table = Book.objects.all()
+            elif switch == 'Author':
+                count = 3
+                table = Author.objects.all()
     return render(request,'dbtable.html',{'rows':table,'count':count})
 
 def signup (request):
